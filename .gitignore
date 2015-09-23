@@ -1,4 +1,5 @@
 *.pyc
+.pybuild
 build
 dist
 linz_fileunittest.egg-info

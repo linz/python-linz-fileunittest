@@ -77,6 +77,7 @@ class TestCase( unittest.TestCase ):
                     os.unlink(self.dumpFile)
                 dumpFileReset=True
             self.dumpfh=open(self.dumpFile,'a')
+            self.dumpfh.write(("="*70)+"\n");
 
     def tearDown( self ):
         if self.dumpfh:
@@ -102,7 +103,10 @@ class TestCase( unittest.TestCase ):
             message=message or testname+' incorrect'
             expected=self.testResults.get(testcode)
             if not isinstance(output,basestring):
-                expected=eval(expected)
+                try:
+                    expected=eval(expected)
+                except:
+                    output=repr(output)
             self.checkEqual(output,expected,message,delta)
 
     def checkEqual( self, output, expected, message, delta ):
