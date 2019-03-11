@@ -47,6 +47,9 @@ class TestCase( unittest.TestCase ):
     file .results.
     '''
 
+    class TestCaseRuntimeError( RuntimeError ):
+        pass
+
     resultsFile=None
     dumpFile=None
     testResults={}
@@ -102,6 +105,8 @@ class TestCase( unittest.TestCase ):
         else:
             message=message or testname+' incorrect'
             expected=self.testResults.get(testcode)
+            if expected is None:
+                raise self.TestCaseRuntimeError('Test {0} not defined'.format(testname))
             if not isinstance(output,basestring):
                 try:
                     expected=eval(expected)
