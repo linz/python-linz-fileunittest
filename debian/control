@@ -9,7 +9,7 @@ Standards-Version: 3.9.1
 Package: python-linz-fileunittest
 Architecture: all
 Depends: ${misc:Depends}, ${python:Depends}
-Description: Python LINZ Utilties
+Description: Python LINZ Utilities
  Provides support for unit testing
  .
  This package 
