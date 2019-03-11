@@ -23,7 +23,7 @@ setup(
     # https://packaging.python.org/en/latest/single_source_version.html
     version='1.0.0',
 
-    description='LINZ.fileunittest module - unit test support',
+    description='LINZ.Geodetic.Test.fileunittest module - unit test support',
     long_description=long_description,
 
     # The project's main homepage.
