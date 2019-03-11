@@ -4,6 +4,6 @@ build
 dist
 linz_fileunittest.egg-info
 debian/python-linz*
-debian/debhelper.log
+debian/debhelper*
 debian/substvars
 debian/files
