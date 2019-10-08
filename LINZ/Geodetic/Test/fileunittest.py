@@ -53,6 +53,11 @@ class TestCase( unittest.TestCase ):
     resultsFile=None
     dumpFile=None
     testResults={}
+    strclass=str
+    try:
+        strclass=basestring
+    except:
+        pass
 
     @classmethod
     def setUpClass( cls ):
@@ -100,14 +105,14 @@ class TestCase( unittest.TestCase ):
         testcode=re.sub(r'\W','_',testcode)
         if dumpResults:
             self.dumpfh.write(">>>> "+testcode+" ")
-            self.dumpfh.write(output if isinstance(output,basestring) else repr(output))
+            self.dumpfh.write(output if isinstance(output,self.strclass) else repr(output))
             self.dumpfh.write("\n")
         else:
             message=message or testname+' incorrect'
             expected=self.testResults.get(testcode)
             if expected is None:
                 raise self.TestCaseRuntimeError('Test {0} not defined'.format(testname))
-            if not isinstance(output,basestring):
+            if not isinstance(output,self.strclass):
                 try:
                     expected=eval(expected)
                 except:
@@ -126,7 +131,7 @@ class TestCase( unittest.TestCase ):
         elif isinstance(output,float):
             message=message+" ({0} != {1})".format(output,expected)
             self.assertAlmostEqual(output,expected,msg=message,delta=delta)
-        elif isinstance(output,basestring):
+        elif isinstance(output,self.strclass):
             output=output.strip()
             expected=expected.strip()
             if output != expected:

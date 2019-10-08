@@ -3,7 +3,12 @@ Maintainer: Chris Crook <ccrook@linz.govt.nz>
 Section: python
 X-Python-Version: >= 2.6
 Priority: optional
-Build-Depends: python-setuptools (>= 0.6b3), python-all (>= 2.6.6-3), debhelper (>= 7.4.3)
+Build-Depends: 
+    python-setuptools (>= 0.6b3), 
+    python-all (>= 2.6.6-3), 
+    python3-all (>= 2.6.6-3), 
+    dh-python,
+    debhelper (>= 9)
 Standards-Version: 3.9.1
 
 Package: python-linz-fileunittest
@@ -12,4 +17,14 @@ Depends: ${misc:Depends}, ${python:Depends}
 Description: Python LINZ Utilities
  Provides support for unit testing
  .
- This package 
+ This package provides the python2 LINZ fileunittest module
+ for managing unit tests with file-based test results
+
+Package: python3-linz-fileunittest
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: Python LINZ Utilities
+ Provides support for unit testing
+ .
+ This package provides the python3 LINZ fileunittest module
+ for managing unit tests with file-based test results
