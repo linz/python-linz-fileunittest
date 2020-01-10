@@ -6,5 +6,6 @@ linz_fileunittest.egg-info
 debian/python3-linz*
 debian/python-linz*
 debian/debhelper*
+debian/.debhelper
 debian/substvars
 debian/files
